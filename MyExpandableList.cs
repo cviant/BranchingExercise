@@ -12,7 +12,7 @@
             {
                 if (_size + 1 > _elements.Length)
                 {
-                    object[] newElements = new object[_elements.Length + 10];
+                    object[] newElements = AddRows();
 
                     for (int i = 0; i < _size; i++)
                     {
@@ -26,6 +26,11 @@
 
                 _size++;
             }
+        }
+
+        private object[] AddRows()
+        {
+            return new object[_elements.Length + 10];
         }
 
         public bool ReadOnly
