@@ -10,9 +10,7 @@
         {
             if (!_readOnly)
             {
-                int newSize = _size + 1;
-
-                if (newSize > _elements.Length)
+                if (_size + 1 > _elements.Length)
                 {
                     object[] newElements = new object[_elements.Length + 10];
 
