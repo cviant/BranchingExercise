@@ -10,7 +10,7 @@
         {
             if (!_readOnly)
             {
-                if (_size + 1 > _elements.Length)
+                if (ShouldGrow())
                 {
                     object[] newElements = AddRows();
 
@@ -26,6 +26,11 @@
 
                 _size++;
             }
+        }
+
+        private bool ShouldGrow()
+        {
+            return _size + 1 > _elements.Length;
         }
 
         private object[] AddRows()
