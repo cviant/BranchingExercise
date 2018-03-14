@@ -10,11 +10,9 @@
         {
             if (!_readOnly)
             {
-                int newSize = _size + 1;
-
-                if (newSize > _elements.Length)
+                if (ShouldGrow())
                 {
-                    object[] newElements = new object[_elements.Length + 10];
+                    object[] newElements = AddRows();
 
                     for (int i = 0; i < _size; i++)
                     {
@@ -28,6 +26,16 @@
 
                 _size++;
             }
+        }
+
+        private bool ShouldGrow()
+        {
+            return _size + 1 > _elements.Length;
+        }
+
+        private object[] AddRows()
+        {
+            return new object[_elements.Length + 10];
         }
 
         public bool ReadOnly
